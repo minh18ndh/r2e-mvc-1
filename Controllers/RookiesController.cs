@@ -24,21 +24,21 @@ namespace MyFirstMVC.Controllers
         public IActionResult GetMales()
         {
             var males = people.Where(p => p.Gender == "Male").ToList();
-            return Json(males);
+            return Ok(males);
         }
 
         [HttpGet]
         public IActionResult GetOldest()
         {
             var oldest = people.OrderByDescending(p => p.Age).FirstOrDefault();
-            return Json(oldest);
+            return Ok(oldest);
         }
 
         [HttpGet]
         public IActionResult GetFullNames()
         {
             var fullNames = people.Select(p => p.FullName).ToList();
-            return Json(fullNames);
+            return Ok(fullNames);
         }
 
         [HttpGet]
@@ -59,7 +59,7 @@ namespace MyFirstMVC.Controllers
                 default:
                     return BadRequest("Invalid 'filterType' parameter!");
             }
-            return Json(result);
+            return Ok(result);
         }
 
         [HttpGet]
